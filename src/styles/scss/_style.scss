@@ -1,0 +1,288 @@
+body {
+    background-color: black;
+}
+
+.header {
+    @include header2;
+
+    width: 100px;
+    margin: 0 auto;
+}
+
+.strip-horizontal {
+    @include strips;
+
+    width: 95%;
+    margin: 0 auto;
+}
+
+.strip-vertical {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background-color: $white;
+}
+
+.homepage {
+    &_left-block {
+        @include edit-bootstrap(8, 8, 8, 8);
+
+        &-filters {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &-item {
+                margin: 5px;
+
+                &-title {
+                    @include header3;
+                    font-weight: bold;
+                }
+
+                &-input {
+                    border: none;
+                    border-radius: 5px;
+                    width: 230px;
+                    padding: 5px;
+                    outline: none;
+                }
+
+                &-search {
+                    height: 30px;
+                    border: none;
+                    margin-left: -10px;
+                    background-color: white;
+                    width: 50px;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    outline: none;
+                    
+                    &:hover {
+                        background-color: $button-hover;
+                      }
+                }
+
+                &-reset {
+                    height: 30px;
+                    border: none;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    background-color: white;
+                    width: 50px;
+                    outline: none;
+                    
+                    &:hover {
+                        background-color: $button-hover;
+                      }
+                }
+
+                &-button {
+                    @include button;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+
+    &_right-block {
+        @include edit-bootstrap(4, 4, 4, 4);
+        display: flex;
+        border: 1px solid $white;
+        margin-top: 10px;
+        padding: 10px 0 0 10px;
+
+        &-rating {
+            position: relative;
+            flex-direction: column;
+            width: 100px;
+            height: 150px;
+            align-items: center;
+            border-bottom: 1px solid $white;
+            padding-left: 10px;
+            padding-bottom: 10px;
+            margin-left: -10px;
+
+            &-title {
+                width: 90px;
+                color: $white;
+            }
+
+            &-likes {
+                color: red;
+                position: absolute;
+                bottom: 20px;
+            }
+
+            &-stars {
+                background-position: (0px center, 17px center, 32px center, 47px center, 62px center);
+                background-repeat: no-repeat;
+                margin: 0 0 0 0;
+                height: 14px;
+                width: 80px;
+                position: absolute;
+                bottom: 4px;
+            }
+        }
+
+        &-details {
+            border-left: 1px solid $white;
+            padding: 10px;
+            margin-top: -11px;
+            width: 100%;
+            color: $white;
+            font-weight: 200;
+            line-height: 25px;
+
+            &-director {
+                font-weight: 200;
+            }
+
+            &-actors {
+                font-weight: 200;
+            }
+
+            &-genres {
+                font-weight: 200;
+            }
+
+            &-description {
+                font-weight: 200;
+            }
+
+            &-image {
+                width: 100%;
+                background-position: 50%;
+            }
+        }
+    }
+}
+
+.movieContainer {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.movieBlock {
+    background-color: $white;
+    width: 110px;
+    height: 100px;
+    border: 1px solid $white;
+    border-radius: 5px;
+    display: inline-table;
+    margin: 10px;
+    padding: 10px;
+
+    &_likeDescriptionContainer {
+        display: flex;
+    }
+
+    &_rating {
+        &-stars {
+            @include stars;
+            border-top: 1px solid black;
+            margin: -1px 0 0 -11px;
+        }
+    }
+
+    &_descriptionBlock {
+        border-left: 1px solid black;
+        border-bottom: 1px solid black;
+        padding: 10px;
+        margin-top: -11px;
+        margin-right: -11px;
+
+        &-image {
+            width: 110px;
+            background-position: 50%;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &-title {
+            @include header3;
+            color: blue;
+            font-weight: 900;
+            font-size: 15px;
+            line-height: 15px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(77, 218, 236, 0.514);
+                border-radius: 5px;
+            }
+        }
+    }
+
+    &_likeBlock {
+        position: relative;
+
+        &-likes {
+            border-bottom: 1px solid black;
+            margin-left: -11px;
+            width: 40px;
+            text-align: center;
+        }
+
+        &-likeCounter {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        &-like {
+            background-image: url(../../img/like.png);
+            @include likeDislike;
+
+            &:hover {
+                box-shadow: 3px 0 10px green;
+                background-color: rgba(0, 255, 21, 0.342);
+              }
+        }
+
+        &-dislike {
+            background-image: url(../../img/dislike.png);
+            @include likeDislike;
+
+            &:hover {
+                box-shadow: 3px 0 10px red;
+                background-color: rgba(255, 0, 0, 0.342);
+              }
+        }
+    }
+}
+
+
+.one--star {
+    background-image: url(../../img/star-one.png), url(../../img/star-zero.svg), url(../../img/star-zero.svg), url(../../img/star-zero.svg), url(../../img/star-zero.svg);
+}
+
+.two--stars {
+    background-image: url(../../img/star-one.png), url(../../img/star-one.png), url(../../img/star-zero.svg), url(../../img/star-zero.svg), url(../../img/star-zero.svg);
+}
+
+.three--stars {
+    background-image: url(../../img/star-one.png), url(../../img/star-one.png), url(../../img/star-one.png), url(../../img/star-zero.svg), url(../../img/star-zero.svg);
+}
+
+.four--stars {
+    background-image: url(../../img/star-one.png), url(../../img/star-one.png), url(../../img/star-one.png), url(../../img/star-one.png), url(../../img/star-zero.svg);
+}
+  
+.five--stars {
+    background-image: url(../../img/star-one.png), url(../../img/star-one.png), url(../../img/star-one.png), url(../../img/star-one.png), url(../../img/star-one.png);
+}
+
+.imgContainer {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.titleContainer {
+    height: 62px;
+}
